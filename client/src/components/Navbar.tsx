@@ -45,8 +45,6 @@ function Navbar() {
     navigate("/");
   };
 
-  console.log(currentUser.token)
-
   return (
     <>
       <AppBar position="fixed" >

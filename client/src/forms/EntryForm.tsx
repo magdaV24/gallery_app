@@ -82,7 +82,7 @@ export default function EntryForm({ open, handleClose }: Props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-    <Box >
+    <Box>
     <Box 
     className="form-modal"
     component="form"
@@ -90,7 +90,8 @@ export default function EntryForm({ open, handleClose }: Props) {
         border: "1px solid black",
         padding: 3,
         width: "50vw",
-        height: "fit-content",
+        minHeight: "60vh",
+        height: 'fit-content',
         marginTop: "10vh",
         backgroundColor: 'background.paper'
       }}
