@@ -40,6 +40,9 @@ export default function Register({ open, handleClose }: Props) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
 
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
   function validPassword(pass_one: string, pass_two: string) {
     if (pass_one === pass_two) {
@@ -80,8 +83,8 @@ export default function Register({ open, handleClose }: Props) {
               avatar: res.data.public_id,
               website,
             })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+            .then((res) => setMessage(res.data))
+            .catch((err) => setError(err));
         } catch (error) {
           console.log(error);
         }
@@ -94,6 +97,15 @@ export default function Register({ open, handleClose }: Props) {
     setEmail("");
     setWebsite("");
     navigate("/");
+    setMessage('');
+    setError('')
+  }
+
+  let color = '';
+  if(message === "Account created successfully!"){
+    color = 'success'
+  } else{
+    color = 'error'
   }
 
   return (
@@ -167,6 +179,9 @@ export default function Register({ open, handleClose }: Props) {
           <Button sx={btnStyles} type="submit" onClick={register}>
             REGISTER
           </Button>
+
+          {message && <Typography color={color}>{message}</Typography>}
+          {error && <Typography color={color}>{error}</Typography>}
         </Box>
       </Modal>
     </>

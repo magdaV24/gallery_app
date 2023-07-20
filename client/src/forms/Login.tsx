@@ -47,7 +47,6 @@ export default function Login({ open, handleClose }: Props) {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    console.log(input)
     try {
       await login(input);
     } catch (error) {
